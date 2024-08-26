@@ -97,6 +97,7 @@ For epoch 5
 ### Custom Dataset HSV
 I defined my own custom dataset to make transforms, change color space of image to hsv and output v only. HSV will make us separate the v field, which corresponds to value and will give higher importance to brightness in image. 
 This is extremely helpful with a model that will focus on day & night classifcation, since brightness is a pretty impoprtant feature. 
+![HSV_image](https://github.com/youssefokeil/DayNightClassification/blob/main/Files_Github/HSV_img.jpeg)
 
 ### Performance of Redefined Model
 ```
