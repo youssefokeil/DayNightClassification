@@ -100,7 +100,7 @@ For epoch 30
 , Validation loss is 0.01755, Training Loss is 0.00011, Accuracy is 99.107%
 ```
 Model Complexity Graph
-!(Pytorch_Plot)[https://github.com/youssefokeil/DayNightClassification/blob/main/Files_Github/Pytorch_ModelComplexity.jpeg]
+![Pytorch_Plot](https://github.com/youssefokeil/DayNightClassification/blob/main/Files_Github/Pytorch_ModelComplexity.jpeg)
 
 ## Model Redefiniton Using HSV color space and BatchNorm2d
 ### Custom Dataset HSV
