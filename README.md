@@ -48,8 +48,8 @@ after 90 mins of training on CPU, the model performed so well (in a worrying way
    macro avg       1.00      1.00      1.00      1105
 weighted avg       1.00      1.00      1.00      1105
 ```
-# PyTorch Model
-## Model Definition
+# PyTorch Model (no.1)
+## Model Definition (Same As TensoFlow)
 ```
 class CNNModule(nn.Module):
     def __init__(self):
@@ -57,41 +57,51 @@ class CNNModule(nn.Module):
         #our first convolution layer
         self.conv1=nn.Conv2d(3,16,3,padding=1) 
         self.conv2=nn.Conv2d(16,32,3,padding=1)
-        self.pool=nn.AvgPool2d(2,2)
-        self.fc1=nn.Linear(16*16*32,512)
-        self.fc2=nn.Linear(512,1)
+        self.conv3=nn.Conv2d(32,64,3,padding=1)
+        self.pool=nn.MaxPool2d(2,2)
+        self.fc1=nn.Linear(16*16*64,128)
+        self.fc2=nn.Linear(128,1)
         self.sigmoid=nn.Sigmoid()
         self.dropout=nn.Dropout(p=0.2)
 
     def forward(self,x):
         # input=128 x 128 x 3, output=64 x 64 x 16
         x=self.pool(F.relu(self.conv1(x)))
-        # input=64 x 64 x 16, output=16 x 16 x 32
+        # input=64 x 64 x 16, output=32 x 32 x 32
         x=self.pool(F.relu(self.conv2(x)))
-        x=self.pool(x)
+        # input=32 x 32 x 32, output=16 x 16 x 64
+        x=self.pool(F.relu(self.conv3(x)))
+        # first dropout layer
+        x=self.dropout(x)
         # flatten
-        x=x.view(-1,16*16*32)        
-        # fully connected layer
-        x=self.dropout(x)
+        x=x.view(-1,16*16*64)        
+        # fully connected layers
         x=F.relu(self.fc1(x))
+        # second dropout layer
         x=self.dropout(x)
-        x=F.log_softmax(self.fc2(x),dim=1)
-        return x   
+        x=self.fc2(x)
+        return x     
 
 ```
 ## Performance
+Last 5 epochs of 30 epoch training.
 ```
-For epoch 1
-, Validation loss is 0.69434, Training Loss is 0.02236, Accuracy is 48.292%
-For epoch 2
-, Validation loss is 0.69434, Training Loss is 0.02236, Accuracy is 48.327%
-For epoch 3
-, Validation loss is 0.69434, Training Loss is 0.02236, Accuracy is 48.237%
-For epoch 4
-, Validation loss is 0.69434, Training Loss is 0.02236, Accuracy is 48.254%
-For epoch 5
-, Validation loss is 0.69434, Training Loss is 0.02236, Accuracy is 48.303%
+For epoch 25
+, Validation loss is 0.02024, Training Loss is 0.00014, Accuracy is 99.554%
+For epoch 26
+, Validation loss is 0.02578, Training Loss is 0.00015, Accuracy is 99.380%
+For epoch 27
+, Validation loss is 0.01351, Training Loss is 0.00038, Accuracy is 99.609%
+For epoch 28
+, Validation loss is 0.01130, Training Loss is 0.00039, Accuracy is 99.547%
+For epoch 29
+, Validation loss is 0.02791, Training Loss is 0.00007, Accuracy is 98.822%
+For epoch 30
+, Validation loss is 0.01755, Training Loss is 0.00011, Accuracy is 99.107%
 ```
+Model Complexity Graph
+!(Pytorch_Plot)[https://github.com/youssefokeil/DayNightClassification/blob/main/Files_Github/Pytorch_ModelComplexity.jpeg]
+
 ## Model Redefiniton Using HSV color space and BatchNorm2d
 ### Custom Dataset HSV
 I defined my own custom dataset to make transforms, change color space of image to hsv and output v only. HSV will make us separate the v field, which corresponds to value and will give higher importance to brightness in image. 
