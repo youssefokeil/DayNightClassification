@@ -80,7 +80,6 @@ class CNNModule(nn.Module):
 
 ```
 ## Performance
-after 90 mins of training on CPU, the model performed so well (in a worrying way).
 ```
 For epoch 1
 , Validation loss is 0.69434, Training Loss is 0.02236, Accuracy is 48.292%
