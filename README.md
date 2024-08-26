@@ -97,6 +97,8 @@ For epoch 5
 ### Custom Dataset HSV
 I defined my own custom dataset to make transforms, change color space of image to hsv and output v only. HSV will make us separate the v field, which corresponds to value and will give higher importance to brightness in image. 
 This is extremely helpful with a model that will focus on day & night classifcation, since brightness is a pretty impoprtant feature. 
+
+A day image will look something like this in v color space.
 ![HSV_image](https://github.com/youssefokeil/DayNightClassification/blob/main/Files_Github/HSV_img.jpeg)
 
 ### Performance of Redefined Model
@@ -134,3 +136,6 @@ Epoch 9/10
 Epoch 10/10
 35/35 [==============================] - 35s 968ms/step - loss: 0.0059 - accuracy: 0.9980 - val_loss: 0.0015 - val_accuracy: 1.0000
 ```
+
+A plot of the history of my Tensorflow model:
+![tf_history](https://github.com/youssefokeil/DayNightClassification/blob/main/Files_Github/TF_history.jpeg)
