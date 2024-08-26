@@ -113,14 +113,24 @@ A day image will look something like this in v color space.
 ![HSV_image](https://github.com/youssefokeil/DayNightClassification/blob/main/Files_Github/HSV_img.jpeg)
 
 ### Performance of Redefined Model
+
+The model was more stable during its training routine.
 ```
 For epoch 1
-, Validation loss is 47.03125, Training Loss is 0.00000, Accuracy is 94.754%
+, Validation loss is 0.52297, Training Loss is 0.01354, Accuracy is 96.617%
 For epoch 2
-, Validation loss is 3.93750, Training Loss is 0.00000, Accuracy is 99.696%
+, Validation loss is 0.09303, Training Loss is 0.00000, Accuracy is 99.159%
 For epoch 3
-, Validation loss is 3.00781, Training Loss is 0.00000, Accuracy is 99.396%
+, Validation loss is 0.02011, Training Loss is 0.00000, Accuracy is 99.880%
+For epoch 4
+, Validation loss is 0.02225, Training Loss is 0.00000, Accuracy is 99.820%
+For epoch 5
+, Validation loss is 0.01888, Training Loss is 0.00000, Accuracy is 99.820%
 ```
+Model Complexity Graph
+
+![Pytorch_2](https://github.com/youssefokeil/DayNightClassification/blob/main/Files_Github/Pytorch_Model2_Epochs5.jpeg)
+
 # Tensorflow Model
 ## Model Definition
 ```
